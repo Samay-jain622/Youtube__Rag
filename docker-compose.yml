@@ -1,0 +1,16 @@
+services:
+  backend:
+    image: samay3jain/fastapi-backend:latest 
+    container_name: rag_backend
+    ports:
+      - "9999:9999"
+    env_file:
+      - .env
+    
+  frontend:
+    image: samay3jain/streamlit-frontend:latest
+    container_name: rag_frontend
+    ports:
+      - "8501:8501"
+    depends_on:
+      - backend

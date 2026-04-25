@@ -1,0 +1,20 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+.env.*
+.env
+
+
+docker-compose.override.yml
+3dhcmeOTZ_Q.en.json3
+
+a.py
+chat_memory.db
+_Y_P7kW48Xg.en.json3
