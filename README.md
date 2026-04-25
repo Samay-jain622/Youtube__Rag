@@ -7,7 +7,9 @@ An end-to-end Retrieval-Augmented Generation (RAG) system that transforms YouTub
 📺 Video + Chat Interface
 
 💬 Example Query & Response
+
 assets/
+
 ├── ui-main.png
 
 ├── chat-example.png
@@ -143,7 +145,7 @@ This isn’t just a basic chatbot — it demonstrates:
 
 🛠️ Setup Instructions
 1️⃣ Clone Repository
-git clone https://github.com/your-username/Youtube__Rag.git
+git clone https://github.com/Samay-jain622/Youtube__Rag.git
 cd Youtube__Rag
 
 2️⃣ Create .env
