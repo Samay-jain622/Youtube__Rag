@@ -4,15 +4,17 @@ Chat with Any YouTube Video using AI
 An end-to-end Retrieval-Augmented Generation (RAG) system that transforms YouTube videos into an interactive, queryable knowledge base.
 
 🚀 Live Demo (UI Preview)
+![Chat Demo](https://raw.githubusercontent.com/Samay-jain622/Youtube__Rag/main/assets/img1.png)
+![Chat Demo](https://raw.githubusercontent.com/Samay-jain622/Youtube__Rag/main/assets/img2.png)
 📺 Video + Chat Interface
 
 💬 Example Query & Response
 
 assets/
 
-├── ui-main.png
+├──img1.png 
 
-├── chat-example.png
+├── img2.png 
 
 💡 Problem Statement
 
