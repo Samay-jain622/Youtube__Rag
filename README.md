@@ -9,6 +9,7 @@ An end-to-end Retrieval-Augmented Generation (RAG) system that transforms YouTub
 💬 Example Query & Response
 assets/
 ├── ui-main.png
+
 ├── chat-example.png
 
 💡 Problem Statement
@@ -47,13 +48,21 @@ FastAPI Backend
         ↓
 RAG Pipeline
    ├── Transcript Extraction (yt-dlp)
+   
    ├── Chunking (Sliding Window)
+   
    ├── Embeddings (MiniLM)
+   
    ├── Qdrant Vector DB
+   
    ├── BM25 Retriever
+   
    ├── Retriever Fusion
+   
    ├── Cohere Reranker
+   
    ├── Context Reordering
+   
    └── LLM (Llama 3 via Groq)
 
 ⚙️ Tech Stack
@@ -69,6 +78,7 @@ RAG Pipeline
 | Deployment | Docker                         |
 
 🔍 How It Works
+
 1️⃣ Video Processing
 Extract subtitles using yt-dlp
 Convert into structured transcript
@@ -119,11 +129,16 @@ This isn’t just a basic chatbot — it demonstrates:
 
 📂 Project Structure
 .
-├── rag.py              # Core RAG pipeline
-├── backend.py          # FastAPI server
-├── frontend.py         # Streamlit UI
+├── rag.py   # Core RAG pipeline   
+
+├── backend.py    # FastAPI server
+
+├── frontend.py # Streamlit UI
+
 ├── docker-compose.yml  # Deployment setup
+
 ├── assets/             # Screenshots
+
 └── .env        
 
 🛠️ Setup Instructions
