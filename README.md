@@ -147,7 +147,10 @@ This isn’t just a basic chatbot — it demonstrates:
 
 🛠️ Setup Instructions
 1️⃣ Clone Repository
+
 git clone https://github.com/Samay-jain622/Youtube__Rag.git
+
+
 cd Youtube__Rag
 
 2️⃣ Create .env
@@ -159,33 +162,51 @@ COHERE_API_KEY=your_cohere_api_key
 
 3️⃣ Run with Docker
 
+
 docker-compose up
+
 docker logs -f rag_frontend 
+
 docker logs -f rag_backend 
 
+
 🔌 API Endpoints
+
+
 POST /init_video
+
 {
   "video_id": "3dhcmeOTZ_Q"
 }
 
 Chat
+
 POST /chat
+
+
 {
   "video_id": "3dhcmeOTZ_Q",
   "query": "Explain linear regression"
 }
 )
+
 🔮 Future Improvements
+
+
 🎙 Whisper-based transcription fallback
+
 🌍 Multi-language support
+
 📌 Clickable timestamps in UI
+
 📊 Better UI/UX (chat streaming, highlights)
+
+
 📤 Export summaries
 
 👨‍💻 Author
 
-Samay Jain
+Samay 
 IIT Roorkee
 
 
