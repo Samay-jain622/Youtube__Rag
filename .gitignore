@@ -10,11 +10,24 @@ wheels/
 .venv
 .env.*
 .env
-
-
+.uv-cache 
+data
 docker-compose.override.yml
 3dhcmeOTZ_Q.en.json3
 
 a.py
 chat_memory.db
 _Y_P7kW48Xg.en.json3
+data/knowledge_base/*
+!data/knowledge_base/.gitkeep
+data/*.db
+data/legacy/
+logs/*
+!logs/.gitkeep
+prac.py 
+prac1.py 
+rag.py 
+test.py 
+yt_test.py 
+frontend.py 
+backend.py 

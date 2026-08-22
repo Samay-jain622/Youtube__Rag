@@ -1,16 +1,90 @@
 services:
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-youtube_rag}
+      POSTGRES_USER: ${POSTGRES_USER:-youtube}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-youtube}
+    ports:
+      - "${POSTGRES_PORT:-5433}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-youtube} -d ${POSTGRES_DB:-youtube_rag}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  worker:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    restart: unless-stopped
+    command: celery -A src.worker:celery_app worker --loglevel=INFO --concurrency=2
+    env_file: .env
+    environment: &backend_environment
+      DATA_DIR: /app/data
+      DATABASE_URL: postgresql+psycopg://${POSTGRES_USER:-youtube}:${POSTGRES_PASSWORD:-youtube}@postgres:5432/${POSTGRES_DB:-youtube_rag}
+      REDIS_URL: redis://redis:6379/0
+      CELERY_BROKER_URL: redis://redis:6379/1
+    volumes:
+      - app_data:/app/data
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
   backend:
-    image: samay3jain/fastapi-backend:latest 
-    container_name: rag_backend
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    restart: unless-stopped
+    env_file: .env
+    environment: *backend_environment
     ports:
       - "9999:9999"
-    env_file:
-      - .env
-    
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:9999/health', timeout=5)"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+
   frontend:
-    image: samay3jain/streamlit-frontend:latest
-    container_name: rag_frontend
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    restart: unless-stopped
+    environment:
+      BACKEND_URL: http://backend:9999
+      API_ACCESS_KEY: ${API_ACCESS_KEY:-}
     ports:
       - "8501:8501"
     depends_on:
-      - backend
+      backend:
+        condition: service_healthy
+
+volumes:
+  app_data:
+  postgres_data:
+  redis_data:

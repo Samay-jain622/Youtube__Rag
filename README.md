@@ -4,17 +4,15 @@ Chat with Any YouTube Video using AI
 An end-to-end Retrieval-Augmented Generation (RAG) system that transforms YouTube videos into an interactive, queryable knowledge base.
 
 🚀 Live Demo (UI Preview)
-![Chat Demo](https://raw.githubusercontent.com/Samay-jain622/Youtube__Rag/main/assets/img1.png)
-![Chat Demo](https://raw.githubusercontent.com/Samay-jain622/Youtube__Rag/main/assets/img2.png)
 📺 Video + Chat Interface
 
 💬 Example Query & Response
 
 assets/
 
-├──img1.png 
+├── ui-main.png
 
-├── img2.png 
+├── chat-example.png
 
 💡 Problem Statement
 
@@ -147,10 +145,7 @@ This isn’t just a basic chatbot — it demonstrates:
 
 🛠️ Setup Instructions
 1️⃣ Clone Repository
-
 git clone https://github.com/Samay-jain622/Youtube__Rag.git
-
-
 cd Youtube__Rag
 
 2️⃣ Create .env
@@ -162,51 +157,35 @@ COHERE_API_KEY=your_cohere_api_key
 
 3️⃣ Run with Docker
 
-
 docker-compose up
-
 docker logs -f rag_frontend 
-
 docker logs -f rag_backend 
 
-
 🔌 API Endpoints
-
-
 POST /init_video
-
 {
   "video_id": "3dhcmeOTZ_Q"
 }
 
 Chat
-
 POST /chat
-
-
 {
   "video_id": "3dhcmeOTZ_Q",
-  "query": "Explain linear regression"
+  "query": "What are the main ideas?",
+  "user_id": "user-123",
+  "conversation_id": "conversation-456"
 }
 )
-
 🔮 Future Improvements
-
-
 🎙 Whisper-based transcription fallback
-
 🌍 Multi-language support
-
 📌 Clickable timestamps in UI
-
 📊 Better UI/UX (chat streaming, highlights)
-
-
 📤 Export summaries
 
 👨‍💻 Author
 
-Samay 
+Samay Jain
 IIT Roorkee
 
 

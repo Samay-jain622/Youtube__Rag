@@ -1,0 +1,40 @@
+# Virtual environments
+.venv/
+venv/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Environment
+.env
+
+# Database
+*.db
+*.sqlite3
+
+# Local transcript files
+*.json3
+
+# Git
+.git/
+.gitignore
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Temporary/build artifacts
+*.tar
+*.tgz
+
+# Large data
+data/
+images/
+assets/
+
+a.py 
